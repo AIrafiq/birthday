@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Samira</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #05020a;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Floating Text Container */
+    .text-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .wish-text {
+      position: absolute;
+      color: #ff3377;
+      font-weight: bold;
+      white-space: nowrap;
+      text-shadow: 0 0 10px #ff3377, 0 0 20px #ff0055;
+      animation: floatUp 8s linear infinite;
+      opacity: 0;
+    }
+
+    /* Center Main Glowing Heart & Text */
+    .center-card {
+      text-align: center;
+      z-index: 10;
+      animation: pulse 2s ease-in-out infinite alternate;
+    }
+
+    .main-heart {
+      font-size: 80px;
+      color: #ff0055;
+      text-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055;
+      margin-bottom: 10px;
+    }
+
+    .main-title {
+      color: #ffffff;
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px #ff3377, 0 0 20px #ff3377;
+    }
+
+    /* Keyframe Animations */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.9;
+      }
+      80% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.98); }
+      100% { transform: scale(1.05); }
+    }
+
+    /* Floating Heart Elements */
+    .heart-bg {
+      position: absolute;
+      color: #ff4d88;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center-card">
+    <div class="main-heart">💖</div>
+    <h6 class="main-title">4th October<br> Many Many Happy Returns Of The Day<br> My Kutti <br>
+      Happy Birthday<br> My Besttesttestt Friend <hr>
+      💞তোর জীবনের প্রতিটা ক্ষণ আনন্দময় হোক<br>এই কামনা করি<br>তোর সকল স্বপ্ন পূরণ হোক <br>সব সময় সুস্থ থাকো...💞</h6>
+  </div>
+
+  <div class="text-container" id="container"></div>
+
+  <script>
+    const container = document.getElementById('container');
+    const name = "Samira";
+    const namee = "Kutti";
+    const nameee = "Cutee";
+    const nameeee = "Paglii";
+    const nameeeee = "Jan";
+    const messages = [
+      `Happy Birthday ${name} 💖`,
+      `Happy Birthday ${namee}`,
+      `Happy Birthday ${nameee} 💕`,
+      `Happy Birthday ${nameeee} 💖`,
+      `Happy Birthday ${nameeeee} 💕`,
+      `💖 ${name} 💖`,
+      `Happy Birthday ${name} ✨`
+    ];
+
+    // Create floating text rows
+    function createText() {
+      const text = document.createElement('div');
+      text.className = 'wish-text';
+      text.innerText = messages[Math.floor(Math.random() * messages.length)];
+      
+      text.style.left = Math.random() * 85 + 'vw';
+      text.style.fontSize = (Math.random() * 14 + 16) + 'px';
+      text.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      
+      container.appendChild(text);
+
+      setTimeout(() => {
+        text.remove();
+      }, 10000);
+    }
+
+    // Create floating hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart-bg';
+      heart.innerText = Math.random() > 0.5 ? '❤️' : '💖';
+      
+      heart.style.left = Math.random() * 95 + 'vw';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+      
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    // Generate continuously
+    setInterval(createText, 400);
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
