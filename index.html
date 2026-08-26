@@ -14,6 +14,7 @@
     body {
       background-color: #05020a;
       height: 100vh;
+      width: 100vw;
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -24,9 +25,12 @@
     /* Floating Text Container */
     .text-container {
       position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
+      z-index: 1;
     }
 
     .wish-text {
@@ -34,7 +38,7 @@
       color: #ff3377;
       font-weight: bold;
       white-space: nowrap;
-      text-shadow: 0 0 10px #ff3377, 0 0 20px #ff0055;
+      text-shadow: 0 0 8px #ff3377, 0 0 15px #ff0055;
       animation: floatUp 8s linear infinite;
       opacity: 0;
     }
@@ -43,11 +47,13 @@
     .center-card {
       text-align: center;
       z-index: 10;
+      padding: 15px;
+      max-width: 90%;
       animation: pulse 2s ease-in-out infinite alternate;
     }
 
     .main-heart {
-      font-size: 80px;
+      font-size: 60px;
       color: #ff0055;
       text-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055;
       margin-bottom: 10px;
@@ -55,8 +61,17 @@
 
     .main-title {
       color: #ffffff;
-      font-size: 2.5rem;
-      text-shadow: 0 0 10px #ff3377, 0 0 20px #ff3377;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-shadow: 0 0 8px #ff3377, 0 0 15px #ff3377;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #ff3377;
+      margin: 10px auto;
+      width: 80%;
     }
 
     /* Keyframe Animations */
@@ -72,33 +87,48 @@
         opacity: 0.9;
       }
       100% {
-        transform: translateY(-10vh) scale(1.2);
+        transform: translateY(-10vh) scale(1.1);
         opacity: 0;
       }
     }
 
     @keyframes pulse {
       0% { transform: scale(0.98); }
-      100% { transform: scale(1.05); }
+      100% { transform: scale(1.03); }
     }
 
     /* Floating Heart Elements */
     .heart-bg {
       position: absolute;
       color: #ff4d88;
-      font-size: 20px;
+      font-size: 18px;
       animation: floatUp 6s linear infinite;
       opacity: 0;
+    }
+
+    /* Mobile Responsive Text Size */
+    @media (max-width: 600px) {
+      .main-heart { font-size: 45px; }
+      .main-title { font-size: 0.95rem; line-height: 1.5; }
     }
   </style>
 </head>
 <body>
 
   <div class="center-card">
-    <div <h6 class="main-heart">💖</div>
-    </p> class="main-title">4th October<br> Many Many Happy Returns Of The Day<br> My Kutti <br>
-      Happy Birthday<br> My Besttesttestt Friend <hr>
-      💞তোর জীবনের প্রতিটা ক্ষণ আনন্দময় হোক<br>এই কামনা করি<br>তোর সকল স্বপ্ন পূরণ হোক <br>সব সময় সুস্থ থাকো...💞</h6>
+    <div class="main-heart">💖</div>
+    <p class="main-title">
+      4th October<br> 
+      Many Many Happy Returns Of The Day<br> 
+      My Kutti <br>
+      Happy Birthday<br> 
+      My Besttesttestt Friend 
+      <hr>
+      💞তোর জীবনের প্রতিটা ক্ষণ আনন্দময় হোক<br>
+      এই কামনা করি<br>
+      তোর সকল স্বপ্ন পূরণ হোক <br>
+      সব সময় সুস্থ থাকো...💞
+    </p>
   </div>
 
   <div class="text-container" id="container"></div>
@@ -126,15 +156,20 @@
       text.className = 'wish-text';
       text.innerText = messages[Math.floor(Math.random() * messages.length)];
       
-      text.style.left = Math.random() * 85 + 'vw';
-      text.style.fontSize = (Math.random() * 14 + 16) + 'px';
-      text.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      text.style.left = Math.random() * 75 + 'vw';
+      
+      const isMobile = window.innerWidth < 600;
+      const minFont = isMobile ? 12 : 16;
+      const maxFont = isMobile ? 18 : 24;
+      
+      text.style.fontSize = (Math.random() * (maxFont - minFont) + minFont) + 'px';
+      text.style.animationDuration = (Math.random() * 3 + 6) + 's';
       
       container.appendChild(text);
 
       setTimeout(() => {
         text.remove();
-      }, 10000);
+      }, 9000);
     }
 
     // Create floating hearts
@@ -143,20 +178,20 @@
       heart.className = 'heart-bg';
       heart.innerText = Math.random() > 0.5 ? '❤️' : '💖';
       
-      heart.style.left = Math.random() * 95 + 'vw';
-      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      heart.style.left = Math.random() * 90 + 'vw';
+      heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
       heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
       
       container.appendChild(heart);
 
       setTimeout(() => {
         heart.remove();
-      }, 8000);
+      }, 7000);
     }
 
     // Generate continuously
-    setInterval(createText, 400);
-    setInterval(createHeart, 300);
+    setInterval(createText, 450);
+    setInterval(createHeart, 350);
   </script>
 </body>
 </html>
