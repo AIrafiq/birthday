@@ -22,7 +22,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* Floating Text Container */
+    /* Floating Text Container (Back Layer) */
     .text-container {
       position: absolute;
       top: 0;
@@ -35,43 +35,61 @@
 
     .wish-text {
       position: absolute;
-      color: #ff3377;
-      font-weight: bold;
+      color: #ff4d88;
+      font-weight: 600;
       white-space: nowrap;
-      text-shadow: 0 0 8px #ff3377, 0 0 15px #ff0055;
+      text-shadow: 0 0 8px #ff0055;
       animation: floatUp 8s linear infinite;
       opacity: 0;
     }
 
-    /* Center Main Glowing Heart & Text */
+    /* Center Main Card (Front Layer with Blur) */
     .center-card {
       text-align: center;
       z-index: 10;
-      padding: 15px;
-      max-width: 90%;
-      animation: pulse 2s ease-in-out infinite alternate;
+      padding: 20px 15px;
+      width: 88%;
+      max-width: 400px;
+      background: rgba(15, 5, 25, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 51, 119, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255, 0, 85, 0.25);
+      animation: pulse 2.5s ease-in-out infinite alternate;
     }
 
     .main-heart {
-      font-size: 60px;
+      font-size: 50px;
       color: #ff0055;
-      text-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055;
-      margin-bottom: 10px;
+      text-shadow: 0 0 20px #ff0055;
+      margin-bottom: 5px;
     }
 
     .main-title {
       color: #ffffff;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       line-height: 1.6;
-      text-shadow: 0 0 8px #ff3377, 0 0 15px #ff3377;
+      font-weight: 500;
+    }
+
+    .highlight-name {
+      color: #ff66a3;
+      font-weight: bold;
+      text-shadow: 0 0 8px #ff0055;
+    }
+
+    .bengali-text {
+      color: #ffe6f0;
+      text-shadow: 0 0 5px #ff3377;
     }
 
     hr {
       border: 0;
       height: 1px;
-      background: #ff3377;
-      margin: 10px auto;
-      width: 80%;
+      background: linear-gradient(90deg, transparent, #ff3377, transparent);
+      margin: 12px auto;
+      width: 85%;
     }
 
     /* Keyframe Animations */
@@ -81,86 +99,84 @@
         opacity: 0;
       }
       20% {
-        opacity: 0.9;
+        opacity: 0.75;
       }
       80% {
-        opacity: 0.9;
+        opacity: 0.75;
       }
       100% {
-        transform: translateY(-10vh) scale(1.1);
+        transform: translateY(-10vh) scale(1);
         opacity: 0;
       }
     }
 
     @keyframes pulse {
       0% { transform: scale(0.98); }
-      100% { transform: scale(1.03); }
+      100% { transform: scale(1.02); }
     }
 
     /* Floating Heart Elements */
     .heart-bg {
       position: absolute;
       color: #ff4d88;
-      font-size: 18px;
+      font-size: 16px;
       animation: floatUp 6s linear infinite;
       opacity: 0;
     }
 
-    /* Mobile Responsive Text Size */
-    @media (max-width: 600px) {
-      .main-heart { font-size: 45px; }
-      .main-title { font-size: 0.95rem; line-height: 1.5; }
+    @media (max-width: 400px) {
+      .main-heart { font-size: 42px; }
+      .main-title { font-size: 0.88rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Center Glass Card -->
   <div class="center-card">
     <div class="main-heart">💖</div>
     <p class="main-title">
       4th October<br> 
       Many Many Happy Returns Of The Day<br> 
-      My Kutti <br>
+      <span class="highlight-name">My Kutti</span> <br>
       Happy Birthday<br> 
-      My Besttesttestt Friend 
+      <span class="highlight-name">My Besttesttestt Friend</span>
       <hr>
-      💞তোর জীবনের প্রতিটা ক্ষণ আনন্দময় হোক<br>
-      এই কামনা করি<br>
-      তোর সকল স্বপ্ন পূরণ হোক <br>
-      সব সময় সুস্থ থাকো...💞
+      <span class="bengali-text">
+        💞 তোর জীবনের প্রতিটা ক্ষণ আনন্দময় হোক 💞<br>
+        এই কামনা করি<br>
+        তোর সকল স্বপ্ন পূরণ হোক <br>
+        সব সময় সুস্থ থাকো...
+      </span>
     </p>
   </div>
 
+  <!-- Background Floating Animations -->
   <div class="text-container" id="container"></div>
 
   <script>
     const container = document.getElementById('container');
     const name = "Samira";
-    const namee = "Kutti";
-    const nameee = "Cutee";
-    const nameeee = "Paglii";
-    const nameeeee = "Jan";
     const messages = [
       `Happy Birthday ${name} 💖`,
-      `Happy Birthday ${namee}`,
-      `Happy Birthday ${nameee} 💕`,
-      `Happy Birthday ${nameeee} 💖`,
-      `Happy Birthday ${nameeeee} 💕`,
+      `Happy Birthday Kutti`,
+      `Happy Birthday Cutee 💕`,
+      `Happy Birthday Paglii 💖`,
+      `Happy Birthday Jan 💕`,
       `💖 ${name} 💖`,
       `Happy Birthday ${name} ✨`
     ];
 
-    // Create floating text rows
     function createText() {
       const text = document.createElement('div');
       text.className = 'wish-text';
       text.innerText = messages[Math.floor(Math.random() * messages.length)];
       
-      text.style.left = Math.random() * 75 + 'vw';
+      text.style.left = Math.random() * 80 + 'vw';
       
       const isMobile = window.innerWidth < 600;
-      const minFont = isMobile ? 12 : 16;
-      const maxFont = isMobile ? 18 : 24;
+      const minFont = isMobile ? 11 : 15;
+      const maxFont = isMobile ? 15 : 20;
       
       text.style.fontSize = (Math.random() * (maxFont - minFont) + minFont) + 'px';
       text.style.animationDuration = (Math.random() * 3 + 6) + 's';
@@ -172,14 +188,13 @@
       }, 9000);
     }
 
-    // Create floating hearts
     function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart-bg';
       heart.innerText = Math.random() > 0.5 ? '❤️' : '💖';
       
       heart.style.left = Math.random() * 90 + 'vw';
-      heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+      heart.style.fontSize = (Math.random() * 8 + 12) + 'px';
       heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
       
       container.appendChild(heart);
@@ -189,9 +204,8 @@
       }, 7000);
     }
 
-    // Generate continuously
-    setInterval(createText, 450);
-    setInterval(createHeart, 350);
+    setInterval(createText, 550);
+    setInterval(createHeart, 400);
   </script>
 </body>
 </html>
