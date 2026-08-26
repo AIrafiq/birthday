@@ -22,7 +22,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* Floating Text Container (Back Layer) */
+    /* Floating Text Container */
     .text-container {
       position: absolute;
       top: 0;
@@ -43,19 +43,19 @@
       opacity: 0;
     }
 
-    /* Center Main Card (Front Layer with Blur) */
+    /* Center Main Card */
     .center-card {
       text-align: center;
       z-index: 10;
-      padding: 20px 15px;
+      padding: 22px 16px;
       width: 88%;
       max-width: 400px;
-      background: rgba(15, 5, 25, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 51, 119, 0.3);
+      background: rgba(18, 6, 30, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 51, 119, 0.4);
       border-radius: 20px;
-      box-shadow: 0 0 25px rgba(255, 0, 85, 0.25);
+      box-shadow: 0 0 25px rgba(255, 0, 85, 0.3);
       animation: pulse 2.5s ease-in-out infinite alternate;
     }
 
@@ -68,7 +68,7 @@
 
     .main-title {
       color: #ffffff;
-      font-size: 0.95rem;
+      font-size: 1rem;
       line-height: 1.6;
       font-weight: 500;
     }
@@ -79,16 +79,20 @@
       text-shadow: 0 0 8px #ff0055;
     }
 
+    /* বাংলা লেখার ব্রাইট কালার ও গ্লো */
     .bengali-text {
-      color: #ffe6f0;
-      text-shadow: 0 0 5px #ff3377;
+      color: #ffffff;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      font-weight: 600;
+      text-shadow: 0 0 8px #ff3377, 0 0 15px #ff0055;
     }
 
     hr {
       border: 0;
-      height: 1px;
+      height: 1.5px;
       background: linear-gradient(90deg, transparent, #ff3377, transparent);
-      margin: 12px auto;
+      margin: 14px auto;
       width: 85%;
     }
 
@@ -126,13 +130,14 @@
 
     @media (max-width: 400px) {
       .main-heart { font-size: 42px; }
-      .main-title { font-size: 0.88rem; }
+      .main-title { font-size: 0.9rem; }
+      .bengali-text { font-size: 0.95rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Center Glass Card -->
+  <!-- Center Card -->
   <div class="center-card">
     <div class="main-heart">💖</div>
     <p class="main-title">
@@ -142,12 +147,12 @@
       Happy Birthday<br> 
       <span class="highlight-name">My Besttesttestt Friend</span>
       <hr>
-      <span class="bengali-text">
+      <div class="bengali-text">
         💞 তোর জীবনের প্রতিটা ক্ষণ আনন্দময় হোক 💞<br>
         এই কামনা করি<br>
         তোর সকল স্বপ্ন পূরণ হোক <br>
         সব সময় সুস্থ থাকো...
-      </span>
+      </div>
     </p>
   </div>
 
