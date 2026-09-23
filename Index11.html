@@ -22,25 +22,25 @@
       position: relative;
     }
 
-    /* Center Card Style (Exact match with previous small box) */
+    /* Center Card Style (Exact match with first image box) */
     .center-card {
-      background: rgba(15, 10, 20, 0.9);
-      border: 1.5px solid #ff2a85;
+      background: rgba(18, 12, 22, 0.92);
+      border: 2px solid #ff2a85;
       border-radius: 20px;
-      padding: 15px 12px;
-      width: 90%;
-      max-width: 380px;
+      padding: 22px 16px;
+      width: 92%;
+      max-width: 400px;
       text-align: center;
-      box-shadow: 0 0 20px rgba(255, 42, 133, 0.5), inset 0 0 10px rgba(255, 42, 133, 0.2);
+      box-shadow: 0 0 25px rgba(255, 42, 133, 0.6), inset 0 0 12px rgba(255, 42, 133, 0.25);
       z-index: 10;
       color: #fff;
-      max-height: 85vh;
+      max-height: 88vh;
       overflow-y: auto;
     }
 
     .main-heart {
-      font-size: 38px;
-      margin-bottom: 10px;
+      font-size: 45px;
+      margin-bottom: 12px;
       animation: heartbeat 1.5s infinite;
       filter: drop-shadow(0 0 10px #ff2a85);
     }
@@ -50,19 +50,19 @@
       50% { transform: scale(1.15); }
     }
 
-    /* Glowing Neon Pink Bengali Text */
+    /* Bright White Glowing Bengali Text (Like the first screenshot) */
     .bengali-text {
-      font-size: 0.82rem;
-      line-height: 1.6;
-      color: #ff99cc;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #ffffff;
       text-align: center;
-      text-shadow: 0 0 6px rgba(255, 42, 133, 0.9), 0 0 12px rgba(255, 20, 147, 0.7);
+      text-shadow: 0 0 8px rgba(255, 105, 180, 0.9), 0 0 15px rgba(255, 42, 133, 0.6);
     }
 
     .signature {
-      margin-top: 10px;
-      font-size: 0.88rem;
-      color: #ffb3d1;
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: #ffffff;
       font-weight: bold;
       text-shadow: 0 0 8px rgba(255, 42, 133, 0.9);
     }
@@ -108,6 +108,95 @@
       80% {
         opacity: 0.9;
       }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .main-heart { font-size: 38px; }
+      .bengali-text { font-size: 0.82rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Center Card -->
+  <div class="center-card">
+    <div class="main-heart">💖</div>
+
+    <div class="bengali-text">
+      আমার অসীম উদার ভালোবাসা কোনো শর্তে বাঁধা নয়, কোনো হিসাবের খাতায় লেখা নয়।✍️<br>
+      তোমার হাসিতে আমি আনন্দ খুঁজি, তোমার সুখে নিজের প্রার্থনা জুড়ে দিই।🤲❤️<br>
+      আমার ভালোবাসা নদীর মতো—নিঃশব্দে বয়ে চলে, বিনিময়ে কিছু চায় না।❤️❤️<br>
+      আকাশের মতো বিস্তৃত, সমুদ্রের মতো গভীর, আর ভোরের আলোর মতো নির্মল。<br>
+      দূরত্ব, সময় কিংবা অভিমান—কিছুই তাকে শেষ করতে পারে না。<br>
+      কারণ তোমাকে ভালোবাসা আমার কাছে কোনো মুহূর্তের অনুভূতি নয়; এটি আমার হৃদয়ের সবচেয়ে পবিত্র অধ্যায়।❤️🌸<br>
+      যতদিন শ্বাস থাকবে, ততদিন আমার এই অসীম উদার ভালোবাসা তোমার জন্যই নীরবে দোয়া হয়ে থাকবে😘
+      
+      <div class="signature">
+        ইতি <br>তোমার দ্বিনা 😘
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Floating Animations -->
+  <div class="text-container" id="container"></div>
+
+  <script>
+    const container = document.getElementById('container');
+    const messages = [
+      `I love you jaan 😘`,
+      `I love you like an Ocean 🌊`,
+      `I love you like a mountain 🏔️`,
+      `I love you to deep in my heart 💓`,
+      `Aftab ❤️ Dina`,
+      `I love you alot ✨`
+    ];
+
+    function createText() {
+      const text = document.createElement('div');
+      text.className = 'wish-text';
+      text.innerText = messages[Math.floor(Math.random() * messages.length)];
+      
+      text.style.left = Math.random() * 80 + 'vw';
+      
+      const isMobile = window.innerWidth < 600;
+      const minFont = isMobile ? 11 : 14;
+      const maxFont = isMobile ? 15 : 19;
+      
+      text.style.fontSize = (Math.random() * (maxFont - minFont) + minFont) + 'px';
+      text.style.animationDuration = (Math.random() * 3 + 6) + 's';
+      
+      container.appendChild(text);
+
+      setTimeout(() => {
+        text.remove();
+      }, 9000);
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart-bg';
+      heart.innerText = Math.random() > 0.5 ? '❤️' : '💖';
+      
+      heart.style.left = Math.random() * 90 + 'vw';
+      heart.style.fontSize = (Math.random() * 8 + 12) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+      
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(createText, 550);
+    setInterval(createHeart, 400);
+  </script>
+</body>
+</html>      }
       100% {
         transform: translateY(-10vh) scale(1.2);
         opacity: 0;
