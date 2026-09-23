@@ -12,7 +12,7 @@
     }
 
     body {
-      background: linear-gradient(135deg, #1a001a, #4a0033, #1a001a);
+      background: #000000;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       min-height: 100vh;
       display: flex;
@@ -22,18 +22,16 @@
       position: relative;
     }
 
-    /* Center Card Style */
+    /* Center Card Style with Neon Glow */
     .center-card {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(15, 15, 15, 0.85);
+      border: 1.5px solid #ff2a85;
       border-radius: 20px;
       padding: 25px 20px;
       width: 90%;
-      max-width: 420px;
+      max-width: 400px;
       text-align: center;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(255, 42, 133, 0.4), inset 0 0 15px rgba(255, 42, 133, 0.2);
       z-index: 10;
       color: #fff;
       max-height: 85vh;
@@ -41,9 +39,10 @@
     }
 
     .main-heart {
-      font-size: 50px;
-      margin-bottom: 10px;
+      font-size: 45px;
+      margin-bottom: 15px;
       animation: heartbeat 1.5s infinite;
+      filter: drop-shadow(0 0 10px #ff2a85);
     }
 
     @keyframes heartbeat {
@@ -51,32 +50,20 @@
       50% { transform: scale(1.15); }
     }
 
-    .english-text {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #ffb3d1;
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
-
-    .highlight-name {
-      color: #ff4d94;
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-
     hr {
       border: none;
       height: 1px;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 42, 133, 0.4);
       margin: 15px 0;
     }
 
+    /* Glowing Bengali Text */
     .bengali-text {
       font-size: 0.95rem;
       line-height: 1.8;
-      color: #fff;
+      color: #ffffff;
       text-align: center;
+      text-shadow: 0 0 8px rgba(255, 105, 180, 0.8), 0 0 15px rgba(255, 42, 133, 0.5);
     }
 
     .signature {
@@ -84,6 +71,7 @@
       font-size: 1rem;
       color: #ffb3d1;
       font-weight: bold;
+      text-shadow: 0 0 8px rgba(255, 42, 133, 0.8);
     }
 
     /* Floating Animations Container */
@@ -98,21 +86,22 @@
       z-index: 1;
     }
 
-    /* Floating English Text Styles */
+    /* Floating English Text Styles with Glow */
     .wish-text {
       position: absolute;
-      color: rgba(255, 182, 193, 0.75);
+      color: rgba(255, 182, 193, 0.85);
       font-weight: bold;
       white-space: nowrap;
       animation: floatUp linear infinite;
-      text-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+      text-shadow: 0 0 8px rgba(255, 42, 133, 0.8), 0 0 15px rgba(255, 20, 147, 0.6);
     }
 
     /* Floating Background Hearts */
     .heart-bg {
       position: absolute;
       animation: floatUp linear infinite;
-      opacity: 0.7;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 6px #ff2a85);
     }
 
     @keyframes floatUp {
@@ -121,10 +110,10 @@
         opacity: 0;
       }
       20% {
-        opacity: 0.8;
+        opacity: 0.9;
       }
       80% {
-        opacity: 0.8;
+        opacity: 0.9;
       }
       100% {
         transform: translateY(-10vh) scale(1.2);
@@ -134,8 +123,7 @@
 
     @media (max-width: 400px) {
       .main-heart { font-size: 40px; }
-      .english-text { font-size: 0.9rem; }
-      .bengali-text { font-size: 0.85rem; }
+      .bengali-text { font-size: 0.9rem !important; }
     }
   </style>
 </head>
@@ -144,13 +132,7 @@
   <!-- Center Card -->
   <div class="center-card">
     <div class="main-heart">💖</div>
-    
-    <div class="english-text">
-    <span class="highlight-name">Aftab</span><br>
-      I love you Jan ✨
-    </div>
 
-    <hr>
     <div class="bengali-text">
       আমার অসীম উদার ভালোবাসা কোনো শর্তে বাঁধা নয়, কোনো হিসাবের খাতায় লেখা নয়।✍️<br>
       তোমার হাসিতে আমি আনন্দ খুঁজি, তোমার সুখে নিজের প্রার্থনা জুড়ে দিই।🤲❤️<br>
@@ -161,7 +143,7 @@
       যতদিন শ্বাস থাকবে, ততদিন আমার এই অসীম উদার ভালোবাসা তোমার জন্যই নীরবে দোয়া হয়ে থাকবে😘
       
       <div class="signature">
-        ইতি <br>তোমার দ্বিনা 😘
+        ইতি <br>আফতাব 😘
       </div>
     </div>
   </div>
@@ -176,9 +158,8 @@
       `I love you like an Ocean 🌊`,
       `I love you like a mountain 🏔️`,
       `I love you to deep in my heart 💓`,
-      `I love you alot ✨`,
-      `Aftab ❤️ Dina`,
-      `Forever Yours 💖`
+      `Aftab ❤️`,
+      `I love you alot ✨`
     ];
 
     function createText() {
@@ -218,8 +199,8 @@
       }, 7000);
     }
 
-    setInterval(createText, 500);
-    setInterval(createHeart, 350);
+    setInterval(createText, 550);
+    setInterval(createHeart, 400);
   </script>
 </body>
 </html>
